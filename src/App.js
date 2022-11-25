@@ -1,26 +1,29 @@
-import { Route } from "wouter";
-import "./App.css";
+import { Link, Route } from "wouter";
 
+import "./App.css";
+import Home from "./pages/Home";
+import SearchResults from "./pages/SearchResults";
+import Detail from "./pages/Detail";
 import StaticContext from "./context/StaticContext";
-import Home from "./pages/Home/Home";
-import SearchResults from "./pages/SearchResults/SearchResults";
-import Detail from "./pages/Detail/Detail";
 import { GifsContextProvider } from "./context/GifContext";
 
-function App() {
+export default function App() {
   return (
-    <StaticContext.Provider value={{ name: "alex" }}>
+    <StaticContext.Provider value={{ name: "Alex", fullStack: true }}>
       <div className="App">
         <section className="App-content">
+          <Link to="/">
+            <figure className="App-logo">
+              <img alt="Giffy logo" src="/logo.png" />
+            </figure>
+          </Link>
           <GifsContextProvider>
             <Route component={Home} path="/" />
             <Route component={SearchResults} path="/search/:keyword" />
-            <Route component={Detail} path="/detail/:id" />
+            <Route component={Detail} path="/gif/:id" />
           </GifsContextProvider>
         </section>
       </div>
     </StaticContext.Provider>
   );
 }
-
-export default App;
