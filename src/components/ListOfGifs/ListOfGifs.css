@@ -1,33 +1,15 @@
-:root {
-    --results-columns: 2;
-}
-
 .ListOfGifs {
-    column-count: var(--results-columns);
-    column-gap: .5em;
-    min-height: 100vh;
+  display: grid;
+  min-height: 100vh;
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: masonry;
+  grid-gap: 0px 16px;
+  align-items: center;
 }
 
 .ListOfGifs-item {
-    -webkit-column-break-inside: avoid;
-    /* Chrome, Safari, Opera */
-    page-break-inside: avoid;
-    /* Firefox */
-    break-inside: avoid;
-    /* IE 10+ */
-    background-color: #eee;
-    display: inline-block;
-    width: 100%;
-}
-
-@media (min-width: 600px) {
-    :root {
-        --results-columns: 3;
-    }
-}
-
-@media (min-width: 800px) {
-    :root {
-        --results-columns: 4;
-    }
+  background-color: #eee;
+  display: inline-block;
+  width: 100%;
 }
